@@ -1,0 +1,14 @@
+.page {
+  font-family: "Roboto", Georgia, "Times New Roman", Times, serif;
+  background-color: tan;
+}
+
+.page__content {
+  max-width: 1360px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  font-weight: 400;
+}
