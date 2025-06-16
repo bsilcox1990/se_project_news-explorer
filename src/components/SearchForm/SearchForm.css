@@ -1,0 +1,31 @@
+.search-form {
+  max-width: 608px;
+}
+
+.search-form__container {
+  display: flex;
+  position: relative;
+}
+
+.search-form__input {
+  width: 80%;
+  padding: 21px 0 21px 21px;
+  border-radius: 100px;
+  border: 1px solid rgb(209, 210, 214);
+}
+
+.search-form__submit-button {
+  padding: 20px 0;
+  width: 168px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: rgb(47, 113, 229);
+  border-radius: 100px;
+  border: none;
+  margin-right: -36px;
+  position: absolute;
+  right: 40px;
+  color: #fff;
+  height: 64px;
+}

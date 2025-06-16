@@ -1,4 +1,13 @@
 .footer {
-  font-size: 30px;
-  color: purple;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  padding-bottom: 26px;
+}
+
+.footer__text {
+  font-size: 16px;
+  color: #b6b9bf;
+  font-weight: 400;
+  line-height: 2.2;
+  margin: 0;
 }

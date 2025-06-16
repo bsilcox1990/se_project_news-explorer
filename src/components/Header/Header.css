@@ -1,5 +1,10 @@
 .header {
-  font-size: 50px;
-  color: red;
+}
+
+.header__title {
   margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 30px 0 26px 104px;
 }
