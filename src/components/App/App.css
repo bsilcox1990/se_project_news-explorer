@@ -1,3 +1,9 @@
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
 .page {
   font-family: "Roboto", Georgia, "Times New Roman", Times, serif;
   background-color: tan;

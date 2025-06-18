@@ -28,4 +28,5 @@
   right: 40px;
   color: #fff;
   height: 64px;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
 }

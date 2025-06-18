@@ -1,4 +1,5 @@
 import "./Footer.css";
+import Navigation from "../Navigation/Navigation";
 
 function Footer({ text }) {
   return (
@@ -6,6 +7,7 @@ function Footer({ text }) {
       <p className="footer__text">
         &copy; {new Date().getFullYear()} Supersite, Powered by News API
       </p>
+      <Navigation isFooter={true} />
     </div>
   );
 }

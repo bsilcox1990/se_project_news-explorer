@@ -1,10 +1,13 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 104px;
 }
 
 .header__title {
-  margin: 0;
   color: #fff;
   font-size: 20px;
   font-weight: 700;
-  margin: 30px 0 26px 104px;
+  margin: 30px 0 26px;
+  text-decoration: none;
 }

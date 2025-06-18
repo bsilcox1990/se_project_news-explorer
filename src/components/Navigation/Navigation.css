@@ -1,0 +1,123 @@
+.navigation__footer {
+  display: flex;
+  gap: 40px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__home {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-right: 42px;
+  padding: 0;
+}
+
+.navigation__saved-news {
+  background: transparent;
+  border: none;
+  color: rgb(182, 188, 191);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 0;
+  margin: 0 64px 0 34px;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__profile {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 100px;
+  width: 112px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 19px;
+  box-sizing: content-box;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__logout {
+  width: 24px;
+  height: 24px;
+}
+
+.navigation__signin {
+  width: 176px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  border-radius: 100px;
+  padding: 12px;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__internal-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.navigation__external-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navigation__home_type_footer {
+  background: transparent;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  color: rgb(26, 27, 34);
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__tripleten-link {
+  background: transparent;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  text-decoration: none;
+  color: rgb(26, 27, 34);
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__github-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.navigation__linkedin-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__logo {
+  width: 24px;
+  height: 24px;
+}

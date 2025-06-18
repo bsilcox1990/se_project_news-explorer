@@ -10,6 +10,7 @@ import { getNews } from "../../utils/api";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState("Bradley");
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState({
     source: "",
@@ -26,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={{ isLoggedIn }}>
+    <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
       <div className="page">
         <div className="page__content">
           <div className="page__background">

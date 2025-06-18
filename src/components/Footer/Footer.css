@@ -1,7 +1,8 @@
 .footer {
   background-color: rgb(255, 255, 255);
   display: flex;
-  padding-bottom: 26px;
+  justify-content: space-between;
+  padding: 0 104px 26px;
 }
 
 .footer__text {
