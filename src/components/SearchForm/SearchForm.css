@@ -8,10 +8,14 @@
 }
 
 .search-form__input {
-  width: 80%;
+  width: 100%;
   padding: 21px 0 21px 21px;
   border-radius: 100px;
   border: 1px solid rgb(209, 210, 214);
+}
+
+.search-form__input:focus {
+  outline: none;
 }
 
 .search-form__submit-button {
@@ -25,7 +29,8 @@
   border: none;
   margin-right: -36px;
   position: absolute;
-  right: 40px;
+  right: 0;
+  top: -1px;
   color: #fff;
   height: 64px;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;

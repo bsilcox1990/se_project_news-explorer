@@ -1,4 +1,4 @@
-import { APIkey } from "./constants";
+import { APIkey, baseURL } from "./constants";
 import { dateNow, dateSevenDaysAgo } from "./constants";
 
 const checkResponse = (res) => {
@@ -7,7 +7,7 @@ const checkResponse = (res) => {
 
 export function getNews() {
   return fetch(
-    `https://newsapi.org/v2/everything?q=Apple&from=${startDate}&to=${endDate}&pageSize=100&apiKey=${APIkey}`
+    `${baseURL}?q=Apple&from=${startDate}&to=${endDate}&pageSize=100&apiKey=${APIkey}`
   ).then(checkResponse);
 }
 
