@@ -1,8 +1,16 @@
+import { useState } from "react";
 import "./Main.css";
+import "../SearchForm/SearchForm.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
 function Main({ onSearch, newsArticles }) {
+  const [displayCount, setDisplayCount] = useState(3);
+
+  const updateDisplayCount = () => {
+    setDisplayCount(displayCount + 3);
+  };
+
   return (
     <div className="main">
       <div className="main__content">
@@ -15,9 +23,28 @@ function Main({ onSearch, newsArticles }) {
           <SearchForm onSearch={onSearch} />
         </section>
       </div>
-      <section className="search-results">
-        <NewsCardList newsArticles={newsArticles} />
-      </section>
+      {newsArticles.length > 0 && (
+        <div className="search-results__wrapper">
+          <section className="search-results">
+            <h2 className="search-results__title">Search results</h2>
+
+            <NewsCardList
+              newsArticles={newsArticles}
+              displayCount={displayCount}
+            />
+
+            <div className="search-results__button-wrapper">
+              <button
+                onClick={updateDisplayCount}
+                type="button"
+                className="search-results__expand-button"
+              >
+                Show more
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   );
 }

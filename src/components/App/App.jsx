@@ -4,14 +4,16 @@ import "./App.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import { getNews } from "../../utils/api";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState("Bradley");
   const [articles, setArticles] = useState([]);
+  const [keywords, setKeywords] = useState([]);
   const [article, setArticle] = useState({
     source: "The verge",
     title: "Apple’s upgraded Siri might not arrive until next spring",
@@ -22,13 +24,23 @@ function App() {
       "https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/DSC08596_processed.jpg.webp?quality=90&strip=all&crop=0%2C11.097693417406%2C100%2C77.804613165189&w=1200",
   });
 
+  const capitalizedWords = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  };
+
   const handleSearch = (query) => {
     getNews(query)
       .then((data) => {
         setArticles(data.articles);
+        const capitalQuery = capitalizedWords(query);
+        setKeywords((prev) => [...prev, capitalQuery]);
       })
       .catch(console.error);
   };
+
+  useEffect(() => {
+    console.log("keywords array", keywords);
+  }, [keywords]);
 
   useEffect(() => {
     console.log("in use effect", articles);
@@ -40,11 +52,30 @@ function App() {
     <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
       <div className="page">
         <div className="page__content">
-          <div className="page__background">
-            <Header isLoggedIn={isLoggedIn} />
-            <Main onSearch={handleSearch} newsArticles={articles} />
-          </div>
-          <About />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <div className="page__background">
+                    <Header />
+                    <Main onSearch={handleSearch} newsArticles={articles} />
+                  </div>
+                  <About />
+                </>
+              }
+            />
+            <Route
+              path="/saved-news"
+              element={
+                <>
+                  <Header />
+                  <SavedNews newsArticles={articles} keywords={keywords} />
+                </>
+              }
+            />
+          </Routes>
+
           <Footer isFooter={true} />
         </div>
       </div>

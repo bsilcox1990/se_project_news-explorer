@@ -1,0 +1,30 @@
+.saved-news {
+  flex: 1 0 auto;
+  border-top: 1px solid rgb(209, 210, 214);
+}
+
+.saved-news__header {
+  margin: 0 0 56px 104px;
+}
+
+.saved-news__title {
+  color: rgba(26, 27, 34, 0.5);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 40px 0 28px;
+}
+
+.saved-news__info {
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+  max-width: 530px;
+  margin: 0 0 30px;
+}
+
+.saved-news__keywords {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}

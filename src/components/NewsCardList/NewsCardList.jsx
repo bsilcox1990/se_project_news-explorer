@@ -2,8 +2,7 @@ import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 
-function NewsCardList({ newsArticles }) {
-  const [displayCount, setDisplayCount] = useState(3);
+function NewsCardList({ newsArticles, displayCount }) {
   return (
     <ul className="news-card-list">
       {newsArticles.length > 0 &&

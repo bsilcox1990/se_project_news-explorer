@@ -1,13 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navigation.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import githubIcon from "../../assets/github-icon.svg";
 import linkedinIcon from "../../assets/linkedin-icon.svg";
 import logoutIcon from "../../assets/logout.svg";
+import blackLogoutIcon from "../../assets/logout-black.svg";
 
 function Navigation({ isFooter = false }) {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
+  const location = useLocation();
+  const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
   return isFooter ? (
     <div className="navigation__footer">
       <div className="navigation__internal-links">
@@ -52,14 +55,24 @@ function Navigation({ isFooter = false }) {
     </div>
   ) : isLoggedIn ? (
     <div className="navigation">
-      <button className="navigation__home">
+      <button
+        className={`navigation__home ${
+          isSavedNewsRoute && "navigation__home_type_saved-news"
+        }`}
+      >
         <Link to="/">Home</Link>
       </button>
-      <button className="navigation__saved-news">Saved News</button>
-      <button className="navigation__profile">
+      <button className="navigation__saved-news">
+        <Link to="/saved-news">Saved News</Link>
+      </button>
+      <button
+        className={`navigation__profile ${
+          isSavedNewsRoute && "navigation__profile_type_saved-news"
+        }`}
+      >
         {currentUser}{" "}
         <img
-          src={logoutIcon}
+          src={isSavedNewsRoute ? blackLogoutIcon : logoutIcon}
           alt="logout icon"
           className="navigation__logout"
         />

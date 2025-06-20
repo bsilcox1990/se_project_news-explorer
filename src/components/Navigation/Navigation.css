@@ -19,6 +19,10 @@
   padding: 0;
 }
 
+.navigation__home_type_saved-news {
+  color: #000;
+}
+
 .navigation__saved-news {
   background: transparent;
   border: none;
@@ -44,6 +48,11 @@
   padding: 12px 19px;
   box-sizing: content-box;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.navigation__profile_type_saved-news {
+  color: #000;
+  border: 1px solid #000;
 }
 
 .navigation__logout {
