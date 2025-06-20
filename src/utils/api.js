@@ -5,9 +5,9 @@ const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-export function getNews() {
+export function getNews(query) {
   return fetch(
-    `${baseURL}?q=Apple&from=${startDate}&to=${endDate}&pageSize=100&apiKey=${APIkey}`
+    `${baseURL}?q=${query}&from=${startDate}&to=${endDate}&pageSize=100&apiKey=${APIkey}`
   ).then(checkResponse);
 }
 

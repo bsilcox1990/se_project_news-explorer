@@ -24,3 +24,7 @@
   font-weight: 400;
   margin: 0 0 88px;
 }
+
+.main__cards-list {
+  background-color: blue;
+}

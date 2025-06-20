@@ -12,7 +12,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("Bradley");
   const [articles, setArticles] = useState([]);
-  const [query, setQuery] = useState("");
   const [article, setArticle] = useState({
     source: "The verge",
     title: "Apple’s upgraded Siri might not arrive until next spring",
@@ -23,12 +22,19 @@ function App() {
       "https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/DSC08596_processed.jpg.webp?quality=90&strip=all&crop=0%2C11.097693417406%2C100%2C77.804613165189&w=1200",
   });
 
+  const handleSearch = (query) => {
+    getNews(query)
+      .then((data) => {
+        setArticles(data.articles);
+      })
+      .catch(console.error);
+  };
+
   useEffect(() => {
-    getNews().then((data) => {
-      setArticles(data.articles);
-      console.log(data.articles[0]);
-    });
-  }, []);
+    console.log("in use effect", articles);
+  }, [articles]);
+
+  console.log("outside use effect", articles);
 
   return (
     <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
@@ -36,7 +42,7 @@ function App() {
         <div className="page__content">
           <div className="page__background">
             <Header isLoggedIn={isLoggedIn} />
-            <Main searchQuery={query} />
+            <Main onSearch={handleSearch} newsArticles={articles} />
           </div>
           <About />
           <Footer isFooter={true} />

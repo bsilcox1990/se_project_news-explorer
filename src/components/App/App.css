@@ -19,7 +19,7 @@ a {
 }
 
 .page__background {
-  background: url(../../assets/phone-background-min.jpg) center no-repeat;
+  background: url(../../assets/phone-background-min.jpg) no-repeat;
   background-size: cover;
   flex: 1 0 auto;
 }
