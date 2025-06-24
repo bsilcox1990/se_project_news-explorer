@@ -7,7 +7,7 @@ import linkedinIcon from "../../assets/linkedin-icon.svg";
 import logoutIcon from "../../assets/logout.svg";
 import blackLogoutIcon from "../../assets/logout-black.svg";
 
-function Navigation({ isFooter = false }) {
+function Navigation({ isFooter = false, handleLoginModal }) {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
@@ -84,7 +84,11 @@ function Navigation({ isFooter = false }) {
         <Link to="/">Home</Link>
       </button>
 
-      <button className="navigation__signin" type="button">
+      <button
+        onClick={handleLoginModal}
+        className="navigation__signin"
+        type="button"
+      >
         Sign in
       </button>
     </div>

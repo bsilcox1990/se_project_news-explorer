@@ -4,7 +4,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Header({}) {
+function Header({ handleLoginModal }) {
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
 
@@ -17,7 +17,7 @@ function Header({}) {
       >
         <Link to="/">NewsExplorer</Link>
       </h1>
-      <Navigation />
+      <Navigation handleLoginModal={handleLoginModal} />
     </div>
   );
 }

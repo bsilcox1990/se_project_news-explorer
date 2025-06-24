@@ -18,3 +18,17 @@
   font-weight: 700;
   src: url(./fonts/RobotoSlab-Bold.ttf) format("truetype");
 }
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: url(./fonts/RobotoSlab-ExtraBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/Inter_18pt-Regular.ttf) format("truetype");
+}

@@ -1,6 +1,5 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
-import { useState } from "react";
 
 function NewsCardList({ newsArticles, displayCount }) {
   return (
@@ -9,7 +8,6 @@ function NewsCardList({ newsArticles, displayCount }) {
         newsArticles.slice(0, displayCount).map((item, index) => {
           return <NewsCard key={index} newsArticle={item} />;
         })}
-      {/* <NewsCard newsArticle={newsArticle} /> */}
     </ul>
   );
 }
