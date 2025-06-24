@@ -4,7 +4,7 @@ import "../SearchForm/SearchForm.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-function Main({ onSearch, newsArticles }) {
+function Main({ onSearch, newsArticles, onSaveArticle }) {
   const [displayCount, setDisplayCount] = useState(3);
 
   const updateDisplayCount = () => {
@@ -27,12 +27,11 @@ function Main({ onSearch, newsArticles }) {
         <div className="search-results__wrapper">
           <section className="search-results">
             <h2 className="search-results__title">Search results</h2>
-
             <NewsCardList
               newsArticles={newsArticles}
               displayCount={displayCount}
+              onSaveArticle={onSaveArticle}
             />
-
             <div className="search-results__button-wrapper">
               <button
                 onClick={updateDisplayCount}

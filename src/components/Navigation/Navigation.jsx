@@ -11,6 +11,7 @@ function Navigation({ isFooter = false, handleLoginModal }) {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
+
   return isFooter ? (
     <div className="navigation__footer">
       <div className="navigation__internal-links">
@@ -62,7 +63,11 @@ function Navigation({ isFooter = false, handleLoginModal }) {
       >
         <Link to="/">Home</Link>
       </button>
-      <button className="navigation__saved-news">
+      <button
+        className={`navigation__saved-news ${
+          isSavedNewsRoute && "navigation__saved-news_type_saved-news"
+        }`}
+      >
         <Link to="/saved-news">Saved News</Link>
       </button>
       <button

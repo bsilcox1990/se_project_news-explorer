@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./NewsCard.css";
 import saveIcon from "../../assets/save-article.svg";
+import saveIconHover from "../../assets/save-article-hover.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function NewsCard({ newsArticle }) {
+function NewsCard({ newsArticle, onSaveArticle }) {
+  const [hover, setHover] = useState(false);
   const { isLoggedIn } = useContext(CurrentUserContext);
+
+  const handleSaveClick = () => {
+    onSaveArticle(newsArticle);
+  };
+
   return newsArticle ? (
     <div className="news-card">
       <div
@@ -14,7 +21,10 @@ function NewsCard({ newsArticle }) {
         data-tooltip={isLoggedIn ? "" : "Sign in to save articles"}
       >
         <img
-          src={saveIcon}
+          src={hover ? saveIconHover : saveIcon}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={handleSaveClick}
           alt="icon for saving news article"
           className="news-card__save-icon"
         />

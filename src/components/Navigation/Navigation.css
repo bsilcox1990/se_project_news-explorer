@@ -35,6 +35,10 @@
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
 }
 
+.navigation__saved-news_type_saved-news {
+  color: #000;
+}
+
 .navigation__profile {
   background: transparent;
   border: 1px solid #fff;

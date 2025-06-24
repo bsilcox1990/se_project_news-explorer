@@ -3,8 +3,8 @@ import "./SavedNews.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SavedNews({ newsArticles, keywords }) {
-  const [count, setCount] = useState(0);
+function SavedNews({ keywords, savedArticles }) {
+  const [count, setCount] = useState(savedArticles.length);
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -19,7 +19,9 @@ function SavedNews({ newsArticles, keywords }) {
           <span style={{ fontWeight: 700 }}>{keywords.join(", ")}</span>
         </p>
       </div>
-      <NewsCardList newsArticles={newsArticles} />
+      {savedArticles.length > 0 && (
+        <NewsCardList savedArticles={savedArticles} />
+      )}
     </div>
   );
 }
