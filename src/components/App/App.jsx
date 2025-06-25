@@ -14,22 +14,23 @@ import { getNews } from "../../utils/api";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState("Bradley");
+  const [topic, setTopic] = useState("");
   const [articles, setArticles] = useState([]);
-  const [selectedArticle, setSelectedArticle] = useState({});
   const [savedArticles, setSavedArticles] = useState([]);
-  const [keywords, setKeywords] = useState([]);
   const [activeModal, setActiveModal] = useState("");
+
+  const savedArticleUrls = new Set(
+    savedArticles.map((article) => {
+      return article.url;
+    })
+  );
 
   const handleRegisterModal = () => setActiveModal("register-user");
   const handleLoginModal = () => setActiveModal("login-user");
   const handleCloseModal = () => setActiveModal("");
 
-  const capitalizedWords = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  };
-
   const handleSaveArticle = (article) => {
-    setSavedArticles((prev) => [...prev, article]);
+    setSavedArticles((prev) => [...prev, { ...article, topic }]);
   };
 
   const handleDeleteArticle = (article) => {
@@ -43,15 +44,10 @@ function App() {
     getNews(query)
       .then((data) => {
         setArticles(data.articles);
-        const capitalQuery = capitalizedWords(query);
-        setKeywords((prev) => [...prev, capitalQuery]);
+        setTopic(query);
       })
       .catch(console.error);
   };
-
-  useEffect(() => {
-    console.log("keywords array", keywords);
-  }, [keywords]);
 
   useEffect(() => {
     console.log("in use effect", articles);
@@ -78,6 +74,8 @@ function App() {
                       onSearch={handleSearch}
                       newsArticles={articles}
                       onSaveArticle={handleSaveArticle}
+                      savedArticles={savedArticles}
+                      savedArticleUrls={savedArticleUrls}
                     />
                   </div>
                   <About />
@@ -90,9 +88,9 @@ function App() {
                 <>
                   <Header />
                   <SavedNews
-                    keywords={keywords}
                     savedArticles={savedArticles}
                     onDeleteArticle={handleDeleteArticle}
+                    savedArticleUrls={savedArticleUrls}
                   />
                 </>
               }

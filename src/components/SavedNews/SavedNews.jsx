@@ -1,10 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./SavedNews.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SavedNews({ keywords, savedArticles, onDeleteArticle }) {
-  const [count, setCount] = useState(savedArticles.length);
+function SavedNews({ savedArticles, onDeleteArticle, savedArticleUrls }) {
+  const count = savedArticles.length;
+  const keywords = [
+    ...new Set(
+      savedArticles.map((article) => {
+        return (
+          article.topic.charAt(0).toUpperCase() +
+          article.topic.slice(1).toLowerCase()
+        );
+      })
+    ),
+  ];
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -23,6 +33,7 @@ function SavedNews({ keywords, savedArticles, onDeleteArticle }) {
         <NewsCardList
           savedArticles={savedArticles}
           onDeleteArticle={onDeleteArticle}
+          savedArticleUrls={savedArticleUrls}
         />
       )}
     </div>

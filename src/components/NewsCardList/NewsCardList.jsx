@@ -8,6 +8,7 @@ function NewsCardList({
   savedArticles,
   onSaveArticle,
   onDeleteArticle,
+  savedArticleUrls,
 }) {
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
@@ -20,6 +21,8 @@ function NewsCardList({
             key={index}
             newsArticle={item}
             onSaveArticle={onSaveArticle}
+            savedArticles={savedArticles}
+            savedArticleUrls={savedArticleUrls}
           />
         );
       })}
@@ -32,6 +35,8 @@ function NewsCardList({
             key={index}
             newsArticle={item}
             onDeleteArticle={onDeleteArticle}
+            savedArticles={savedArticles}
+            savedArticleUrls={savedArticleUrls}
           />
         );
       })}

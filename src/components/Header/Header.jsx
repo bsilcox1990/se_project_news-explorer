@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ handleLoginModal }) {
   const location = useLocation();

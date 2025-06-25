@@ -1,7 +1,7 @@
 import "./Footer.css";
 import Navigation from "../Navigation/Navigation";
 
-function Footer({}) {
+function Footer() {
   return (
     <div className="footer">
       <p className="footer__text">
