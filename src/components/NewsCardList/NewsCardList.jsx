@@ -7,6 +7,7 @@ function NewsCardList({
   displayCount,
   savedArticles,
   onSaveArticle,
+  onDeleteArticle,
 }) {
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
@@ -26,7 +27,13 @@ function NewsCardList({
   ) : (
     <ul className="news-card-list">
       {savedArticles.map((item, index) => {
-        return <NewsCard key={index} newsArticle={item} />;
+        return (
+          <NewsCard
+            key={index}
+            newsArticle={item}
+            onDeleteArticle={onDeleteArticle}
+          />
+        );
       })}
     </ul>
   );

@@ -32,6 +32,13 @@ function App() {
     setSavedArticles((prev) => [...prev, article]);
   };
 
+  const handleDeleteArticle = (article) => {
+    const tempArray = savedArticles.filter((item) => {
+      return item !== article;
+    });
+    setSavedArticles(tempArray);
+  };
+
   const handleSearch = (query) => {
     getNews(query)
       .then((data) => {
@@ -85,6 +92,7 @@ function App() {
                   <SavedNews
                     keywords={keywords}
                     savedArticles={savedArticles}
+                    onDeleteArticle={handleDeleteArticle}
                   />
                 </>
               }

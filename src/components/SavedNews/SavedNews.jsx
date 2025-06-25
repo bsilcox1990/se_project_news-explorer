@@ -3,7 +3,7 @@ import "./SavedNews.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SavedNews({ keywords, savedArticles }) {
+function SavedNews({ keywords, savedArticles, onDeleteArticle }) {
   const [count, setCount] = useState(savedArticles.length);
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -20,7 +20,10 @@ function SavedNews({ keywords, savedArticles }) {
         </p>
       </div>
       {savedArticles.length > 0 && (
-        <NewsCardList savedArticles={savedArticles} />
+        <NewsCardList
+          savedArticles={savedArticles}
+          onDeleteArticle={onDeleteArticle}
+        />
       )}
     </div>
   );
