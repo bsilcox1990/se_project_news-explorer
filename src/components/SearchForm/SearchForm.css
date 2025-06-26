@@ -25,6 +25,7 @@
   font-weight: 500;
   line-height: 24px;
   background-color: rgb(47, 113, 229);
+  filter: drop-shadow(0 5px 15px rgba(14, 26, 57, 0.2));
   border-radius: 100px;
   border: none;
   margin-right: -36px;
@@ -33,33 +34,5 @@
   top: -1px;
   color: #fff;
   height: 64px;
-  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
-}
-
-.search-results__wrapper {
-  background-color: #f5f6f7;
-  width: 100%;
-}
-
-.search-results__title {
-  font-size: 40px;
-  line-height: 46px;
-  font-weight: 400;
-  margin: 80px 0 0 104px;
-}
-
-.search-results__button-wrapper {
-  padding-bottom: 80px;
-}
-
-.search-results__expand-button {
-  margin: 0 auto;
-  padding: 20px 0;
-  width: 288px;
-  border-radius: 80px;
-  border: none;
-  background-color: rgb(232, 232, 232);
-  display: flex;
-  justify-content: center;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
 }

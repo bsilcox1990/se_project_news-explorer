@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ handleLoginModal }) {
+function Header({ handleLoginModal, onLogout }) {
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
 
@@ -15,7 +15,7 @@ function Header({ handleLoginModal }) {
       >
         <Link to="/">NewsExplorer</Link>
       </h1>
-      <Navigation handleLoginModal={handleLoginModal} />
+      <Navigation handleLoginModal={handleLoginModal} onLogout={onLogout} />
     </div>
   );
 }

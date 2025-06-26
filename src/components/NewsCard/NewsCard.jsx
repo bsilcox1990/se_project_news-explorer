@@ -21,7 +21,9 @@ function NewsCard({
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   const handleSaveClick = () => {
-    onSaveArticle(newsArticle);
+    if (isLoggedIn) {
+      onSaveArticle(newsArticle);
+    }
   };
 
   const handleDeleteClick = () => {

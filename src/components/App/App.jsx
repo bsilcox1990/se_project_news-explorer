@@ -8,12 +8,15 @@ import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
+import ConfirmLogoutModal from "../ConfirmLogoutModal/ConfirmLogoutModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { getNews } from "../../utils/api";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState("Bradley");
+  const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState("");
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
@@ -27,6 +30,8 @@ function App() {
 
   const handleRegisterModal = () => setActiveModal("register-user");
   const handleLoginModal = () => setActiveModal("login-user");
+  const handleRegistrationSuccessModal = () => setActiveModal("success");
+  const handleConfirmLogoutModal = () => setActiveModal("confirm-logout");
   const handleCloseModal = () => setActiveModal("");
 
   const handleSaveArticle = (article) => {
@@ -41,12 +46,29 @@ function App() {
   };
 
   const handleSearch = (query) => {
+    setIsLoading(true);
     getNews(query)
       .then((data) => {
         setArticles(data.articles);
         setTopic(query);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const handleRegisterUser = () => {
+    handleRegistrationSuccessModal();
+  };
+
+  const handleLogoutModal = () => {
+    handleConfirmLogoutModal();
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    handleCloseModal();
   };
 
   useEffect(() => {
@@ -69,13 +91,17 @@ function App() {
               element={
                 <>
                   <div className="page__background">
-                    <Header handleLoginModal={handleLoginModal} />
+                    <Header
+                      handleLoginModal={handleLoginModal}
+                      onLogout={handleLogoutModal}
+                    />
                     <Main
                       onSearch={handleSearch}
                       newsArticles={articles}
                       onSaveArticle={handleSaveArticle}
                       savedArticles={savedArticles}
                       savedArticleUrls={savedArticleUrls}
+                      isLoading={isLoading}
                     />
                   </div>
                   <About />
@@ -102,11 +128,22 @@ function App() {
           activeModal={activeModal}
           onClose={handleCloseModal}
           handleLoginModal={handleLoginModal}
+          onRegister={handleRegisterUser}
         />
         <LoginModal
           activeModal={activeModal}
           onClose={handleCloseModal}
           handleRegisterModal={handleRegisterModal}
+        />
+        <RegistrationSuccessModal
+          activeModal={activeModal}
+          handleLoginModal={handleLoginModal}
+          onClose={handleCloseModal}
+        />
+        <ConfirmLogoutModal
+          activeModal={activeModal}
+          onClose={handleCloseModal}
+          onLogout={handleLogout}
         />
       </div>
     </CurrentUserContext.Provider>

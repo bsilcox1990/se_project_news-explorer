@@ -3,6 +3,7 @@ import "./Main.css";
 import "../SearchForm/SearchForm.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import Preloader from "../Preloader/Preloader";
 
 function Main({
   onSearch,
@@ -10,6 +11,7 @@ function Main({
   onSaveArticle,
   savedArticles,
   savedArticleUrls,
+  isLoading,
 }) {
   const [displayCount, setDisplayCount] = useState(3);
 
@@ -30,25 +32,31 @@ function Main({
         </section>
       </div>
       {newsArticles.length > 0 && (
-        <div className="search-results__wrapper">
-          <section className="search-results">
-            <h2 className="search-results__title">Search results</h2>
-            <NewsCardList
-              newsArticles={newsArticles}
-              displayCount={displayCount}
-              onSaveArticle={onSaveArticle}
-              savedArticles={savedArticles}
-              savedArticleUrls={savedArticleUrls}
-            />
-            <div className="search-results__button-wrapper">
-              <button
-                onClick={updateDisplayCount}
-                type="button"
-                className="search-results__expand-button"
-              >
-                Show more
-              </button>
-            </div>
+        <div className="main__search-results-wrapper">
+          <section className="main__search-results">
+            {!isLoading ? (
+              <>
+                <h2 className="main__search-results-title">Search results</h2>
+                <NewsCardList
+                  newsArticles={newsArticles}
+                  displayCount={displayCount}
+                  onSaveArticle={onSaveArticle}
+                  savedArticles={savedArticles}
+                  savedArticleUrls={savedArticleUrls}
+                />
+                <div className="main__search-results-button-wrapper">
+                  <button
+                    onClick={updateDisplayCount}
+                    type="button"
+                    className="main__search-results-expand-button"
+                  >
+                    Show more
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Preloader />
+            )}
           </section>
         </div>
       )}
