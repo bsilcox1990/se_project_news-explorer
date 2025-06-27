@@ -21,6 +21,10 @@
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
 }
 
+.news-card__save-icon-wrapper:hover {
+  transform: scale(1.05);
+}
+
 .news-card__save-icon-wrapper.news-card__show-tooltip:hover::before {
   content: attr(data-tooltip);
   position: absolute;

@@ -35,4 +35,10 @@
   color: #fff;
   height: 64px;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form__submit-button:hover {
+  background-color: #347eff;
+  transform: scale(1.02);
 }

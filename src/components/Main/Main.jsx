@@ -4,6 +4,7 @@ import "../SearchForm/SearchForm.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
+import notFound from "../../assets/not-found_v1.png";
 
 function Main({
   onSearch,
@@ -12,6 +13,7 @@ function Main({
   savedArticles,
   savedArticleUrls,
   isLoading,
+  topic,
 }) {
   const [displayCount, setDisplayCount] = useState(3);
 
@@ -31,10 +33,10 @@ function Main({
           <SearchForm onSearch={onSearch} />
         </section>
       </div>
-      {newsArticles.length > 0 && (
+      {topic && (
         <div className="main__search-results-wrapper">
           <section className="main__search-results">
-            {!isLoading ? (
+            {!isLoading && newsArticles.length > 0 && (
               <>
                 <h2 className="main__search-results-title">Search results</h2>
                 <NewsCardList
@@ -44,18 +46,39 @@ function Main({
                   savedArticles={savedArticles}
                   savedArticleUrls={savedArticleUrls}
                 />
-                <div className="main__search-results-button-wrapper">
-                  <button
-                    onClick={updateDisplayCount}
-                    type="button"
-                    className="main__search-results-expand-button"
-                  >
-                    Show more
-                  </button>
+                {displayCount < newsArticles.length && (
+                  <div className="main__search-results-button-wrapper">
+                    <button
+                      onClick={updateDisplayCount}
+                      type="button"
+                      className="main__search-results-expand-button"
+                    >
+                      Show more
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+            {!isLoading && newsArticles.length === 0 && (
+              <>
+                <div className="main__not-found">
+                  <img
+                    src={notFound}
+                    alt="magnifying glass with a frowny face"
+                    className="main__not-found-image"
+                  />
+                  <h2 className="main__not-found-title">Nothing found</h2>
+                  <p className="main__not-found-text">
+                    Sorry, but nothing matched <br></br> your search terms.
+                  </p>
                 </div>
               </>
-            ) : (
-              <Preloader />
+            )}
+            {isLoading && (
+              <>
+                <Preloader />
+                <p className="main__preloader-text">Searching for news...</p>
+              </>
             )}
           </section>
         </div>

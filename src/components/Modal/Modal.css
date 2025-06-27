@@ -64,13 +64,13 @@
   font-size: 12px;
   line-height: 12px;
   gap: 9px;
+  margin-bottom: 31px;
 }
 
 .modal__input {
   border: none;
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 31px;
   padding: 0;
 }
 
@@ -90,6 +90,11 @@
   background-color: rgb(47, 113, 229);
   filter: drop-shadow(0 5px 15px rgba(14, 26, 57, 0.2));
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.modal__submit-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .modal__switch-button {
@@ -143,4 +148,18 @@
   color: #fff;
   padding: 10px 0;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.modal__error {
+  color: red;
+  font-size: 16px;
+  display: block;
+}
+
+.modal__input-error {
+  border-bottom: 1px solid red;
+}
+
+.modal__input-error:focus {
+  border-bottom: 1px solid red;
 }

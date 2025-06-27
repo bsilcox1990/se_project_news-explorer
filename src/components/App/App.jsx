@@ -14,8 +14,8 @@ import LoginModal from "../LoginModal/LoginModal";
 import { getNews } from "../../utils/api";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState("Bradley");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState("");
   const [articles, setArticles] = useState([]);
@@ -47,10 +47,10 @@ function App() {
 
   const handleSearch = (query) => {
     setIsLoading(true);
+    setTopic(query);
     getNews(query)
       .then((data) => {
         setArticles(data.articles);
-        setTopic(query);
       })
       .catch(console.error)
       .finally(() => {
@@ -60,6 +60,12 @@ function App() {
 
   const handleRegisterUser = () => {
     handleRegistrationSuccessModal();
+  };
+
+  const handleLoginUser = () => {
+    setIsLoggedIn(true);
+    setCurrentUser("Bradley");
+    handleCloseModal();
   };
 
   const handleLogoutModal = () => {
@@ -102,6 +108,7 @@ function App() {
                       savedArticles={savedArticles}
                       savedArticleUrls={savedArticleUrls}
                       isLoading={isLoading}
+                      topic={topic}
                     />
                   </div>
                   <About />
@@ -134,6 +141,7 @@ function App() {
           activeModal={activeModal}
           onClose={handleCloseModal}
           handleRegisterModal={handleRegisterModal}
+          onLogin={handleLoginUser}
         />
         <RegistrationSuccessModal
           activeModal={activeModal}

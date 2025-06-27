@@ -47,7 +47,7 @@
   width: 288px;
   border-radius: 80px;
   border: none;
-  background-color: rgb(232, 232, 232);
+  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
@@ -55,4 +55,42 @@
 
 .main__search-results-expand-button:hover {
   background-color: rgba(232, 232, 232, 0.9);
+}
+
+.main__preloader-text {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 80px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgb(181, 188, 191);
+}
+
+.main__not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__not-found-title {
+  margin: 0 0 16px;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: rgb(26, 27, 34);
+}
+
+.main__not-found-text {
+  margin: 0 0 88px;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgb(181, 188, 191);
+  text-align: center;
+}
+
+.main__not-found-image {
+  width: 82.5px;
+  height: 82.5px;
+  margin: 86px 0 31.5px;
 }
