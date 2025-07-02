@@ -59,3 +59,19 @@
     padding: 16px 0;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .search-form__container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .search-form__submit-button {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-form__input {
+    box-sizing: border-box;
+  }
+}

@@ -19,3 +19,12 @@
     margin: 0 40px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 38px;
+    margin: 0 16px;
+    padding: 20px 0 22px;
+  }
+}

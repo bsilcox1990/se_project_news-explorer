@@ -121,3 +121,22 @@
     padding-bottom: 40px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .main__content {
+    width: 288px;
+    margin: 30px 16px 32px 19px;
+  }
+
+  .main__subtitle {
+    margin-bottom: 122px;
+  }
+
+  .main__search-results-title {
+    margin: 32px 0 0 16px;
+  }
+
+  .main__search-results-button-wrapper {
+    padding-bottom: 24px;
+  }
+}

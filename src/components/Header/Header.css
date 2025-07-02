@@ -26,3 +26,13 @@
     margin: 22.73px 0 18.47px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .header {
+    margin: 0 16px;
+  }
+
+  .header__title {
+    margin: 16px 0 16px;
+  }
+}
