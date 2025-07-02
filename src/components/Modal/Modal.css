@@ -9,10 +9,14 @@
   align-items: center;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
   visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__container {
@@ -64,7 +68,7 @@
   font-size: 12px;
   line-height: 12px;
   gap: 9px;
-  margin-bottom: 31px;
+  margin-bottom: 39px;
 }
 
 .modal__input {

@@ -1,32 +1,29 @@
-import { useState } from "react";
 import "./SearchForm.css";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-function SearchForm({ onSearch }) {
-  const [query, setQuery] = useState("");
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
-
+function SearchForm({ onSearch, submitError }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(query);
-    setQuery("");
+    onSearch(values.query);
   };
+
+  const { values, handleChange } = useFormAndValidation();
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <div className="search-form__container">
         <input
           type="text"
-          name="search"
-          id="search"
+          name="query"
+          id="query"
           onChange={handleChange}
-          value={query || ""}
+          value={values.query || ""}
           className="search-form__input"
           placeholder="Enter topic"
         />
         <button className="search-form__submit-button">Search</button>
       </div>
+      {submitError && <span className="search-form__error">{submitError}</span>}
     </form>
   );
 }

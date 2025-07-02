@@ -14,6 +14,7 @@ function Main({
   savedArticleUrls,
   isLoading,
   topic,
+  submitError,
 }) {
   const [displayCount, setDisplayCount] = useState(3);
 
@@ -30,7 +31,7 @@ function Main({
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <SearchForm onSearch={onSearch} />
+          <SearchForm onSearch={onSearch} submitError={submitError} />
         </section>
       </div>
       {topic && (

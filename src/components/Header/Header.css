@@ -7,6 +7,7 @@
 .header__title {
   color: #fff;
   font-size: 20px;
+  line-height: 24px;
   font-weight: 700;
   margin: 30px 0 26px;
   text-decoration: none;
@@ -14,4 +15,14 @@
 
 .header__title_type_saved-news {
   color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    margin: 0 40px;
+  }
+
+  .header__title {
+    margin: 22.73px 0 18.47px;
+  }
 }

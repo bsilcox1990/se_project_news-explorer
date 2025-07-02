@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import githubIcon from "../../assets/github-icon.svg";
@@ -15,9 +15,9 @@ function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
   return isFooter ? (
     <div className="navigation__footer">
       <div className="navigation__internal-links">
-        <Link to="/">
+        <NavLink to="/">
           <button className="navigation__home_type_footer">Home</button>
-        </Link>
+        </NavLink>
         <a
           href="https://tripleten.com/"
           target="_blank"
@@ -56,20 +56,41 @@ function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
     </div>
   ) : isLoggedIn ? (
     <div className="navigation">
-      <button
+      {/* <button
         className={`navigation__home ${
           isSavedNewsRoute && "navigation__home_type_saved-news"
         }`}
+      > */}
+      <NavLink
+        to="/"
+        exact
+        aria-current="page"
+        className={({ isActive }) => {
+          console.log("is active in home button", isActive);
+          return `navigation__home ${isActive && "navigation__home_active"} ${
+            isSavedNewsRoute && "navigation__home_type_saved-news"
+          }`;
+        }}
       >
-        <Link to="/">Home</Link>
-      </button>
-      <button
+        Home
+      </NavLink>
+      {/* </button> */}
+      {/* <button
         className={`navigation__saved-news ${
           isSavedNewsRoute && "navigation__saved-news_type_saved-news"
         }`}
+      > */}
+      <NavLink
+        to="/saved-news"
+        className={({ isActive }) =>
+          `navigation__saved-news ${
+            isActive && "navigation__saved-news_active"
+          } ${isSavedNewsRoute && "navigation__saved-news_type_saved-news"}`
+        }
       >
-        <Link to="/saved-news">Saved News</Link>
-      </button>
+        Saved News
+      </NavLink>
+      {/* </button> */}
       <button
         type="button"
         onClick={onLogout}
@@ -88,7 +109,7 @@ function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
   ) : (
     <div className="navigation">
       <button className="navigation__home" type="button">
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </button>
 
       <button

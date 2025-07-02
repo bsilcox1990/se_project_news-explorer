@@ -8,3 +8,10 @@
   padding: 64px 0;
   flex-wrap: wrap;
 }
+
+@media screen and (max-width: 768px) {
+  .news-card-list {
+    gap: 8px;
+    padding: 32px 0;
+  }
+}

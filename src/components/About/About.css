@@ -26,6 +26,12 @@
   line-height: 24px;
 }
 
+.about__text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
 .about__tripleten {
   font-size: 18px;
   font-weight: 400;
@@ -34,4 +40,29 @@
 
 .about__title {
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about__image-wrapper {
+    width: 232px;
+    margin: 61px 32px 0 40px;
+  }
+
+  .about__image {
+    width: 232px;
+    height: 232px;
+  }
+
+  .about__info {
+    margin-top: 40px;
+    margin-right: 40px;
+  }
+
+  .about__text {
+    font-size: 14px;
+  }
+
+  .about__tripleten {
+    font-size: 14px;
+  }
 }

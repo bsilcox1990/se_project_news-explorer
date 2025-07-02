@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
@@ -11,16 +11,19 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 import ConfirmLogoutModal from "../ConfirmLogoutModal/ConfirmLogoutModal";
 import LoginModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getNews } from "../../utils/api";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [submitError, setSubmitError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState("");
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
   const [activeModal, setActiveModal] = useState("");
+  const navigate = useNavigate();
 
   const savedArticleUrls = new Set(
     savedArticles.map((article) => {
@@ -45,14 +48,25 @@ function App() {
     setSavedArticles(tempArray);
   };
 
+  console.log("submit error", submitError);
+
   const handleSearch = (query) => {
+    if (!query) {
+      setSubmitError("Please enter a keyword");
+      return;
+    }
     setIsLoading(true);
     setTopic(query);
     getNews(query)
       .then((data) => {
         setArticles(data.articles);
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error(err);
+        setSubmitError(
+          "Sorry, something went wrong during the request.  Please try again later."
+        );
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -75,6 +89,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     handleCloseModal();
+    navigate("/");
   };
 
   useEffect(() => {
@@ -109,6 +124,7 @@ function App() {
                       savedArticleUrls={savedArticleUrls}
                       isLoading={isLoading}
                       topic={topic}
+                      submitError={submitError}
                     />
                   </div>
                   <About />
@@ -118,14 +134,14 @@ function App() {
             <Route
               path="/saved-news"
               element={
-                <>
-                  <Header />
+                <ProtectedRoute>
+                  <Header onLogout={handleLogoutModal} />
                   <SavedNews
                     savedArticles={savedArticles}
                     onDeleteArticle={handleDeleteArticle}
                     savedArticleUrls={savedArticleUrls}
                   />
-                </>
+                </ProtectedRoute>
               }
             />
           </Routes>
