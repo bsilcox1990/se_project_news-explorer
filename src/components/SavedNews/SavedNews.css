@@ -47,3 +47,18 @@
     line-height: 34px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .saved-news__title {
+    font-size: 12px;
+    margin: 8px 0 16px;
+  }
+
+  .saved-news__header {
+    margin: 0 0 32px 16px;
+  }
+
+  .saved-news__info {
+    margin: 0 0 50px;
+  }
+}

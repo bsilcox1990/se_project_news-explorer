@@ -1,13 +1,14 @@
 import "./SearchForm.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-function SearchForm({ onSearch, submitError }) {
+function SearchForm({ onSearch, submitError, isLoading }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(values.query);
+    resetForm("");
   };
 
-  const { values, handleChange } = useFormAndValidation();
+  const { values, handleChange, resetForm } = useFormAndValidation();
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
@@ -21,7 +22,9 @@ function SearchForm({ onSearch, submitError }) {
           className="search-form__input"
           placeholder="Enter topic"
         />
-        <button className="search-form__submit-button">Search</button>
+        <button className="search-form__submit-button">
+          {isLoading ? "Searching..." : "Search"}
+        </button>
       </div>
       {submitError && <span className="search-form__error">{submitError}</span>}
     </form>

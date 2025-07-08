@@ -31,7 +31,11 @@ function Main({
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <SearchForm onSearch={onSearch} submitError={submitError} />
+          <SearchForm
+            onSearch={onSearch}
+            submitError={submitError}
+            isLoading={isLoading}
+          />
         </section>
       </div>
       {topic && (

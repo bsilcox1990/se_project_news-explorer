@@ -19,6 +19,7 @@ function LoginModal({ activeModal, handleRegisterModal, onClose, onLogin }) {
       name="login-user"
       title="Sign in"
       onSubmit={handleSubmit}
+      containerType="login-user"
     >
       <label htmlFor="login-email" className="modal__label">
         Email

@@ -206,4 +206,13 @@
     top: 16px;
     right: 16px;
   }
+
+  .news-card__keyword {
+    top: 16px;
+    left: 16px;
+  }
+
+  .news-card__delete-icon-wrapper:hover::before {
+    width: 125px;
+  }
 }

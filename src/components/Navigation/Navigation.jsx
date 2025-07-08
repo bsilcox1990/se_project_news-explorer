@@ -7,7 +7,12 @@ import linkedinIcon from "../../assets/linkedin-icon.svg";
 import logoutIcon from "../../assets/logout.svg";
 import blackLogoutIcon from "../../assets/logout-black.svg";
 
-function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
+function Navigation({
+  isFooter = false,
+  isMobile = false,
+  handleLoginModal,
+  onLogout,
+}) {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
@@ -55,42 +60,31 @@ function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
       </div>
     </div>
   ) : isLoggedIn ? (
-    <div className="navigation">
-      {/* <button
-        className={`navigation__home ${
-          isSavedNewsRoute && "navigation__home_type_saved-news"
-        }`}
-      > */}
+    <div className={`navigation ${isMobile ? "navigation_open" : ""}`}>
       <NavLink
         to="/"
         exact
-        aria-current="page"
         className={({ isActive }) => {
           console.log("is active in home button", isActive);
           return `navigation__home ${isActive && "navigation__home_active"} ${
             isSavedNewsRoute && "navigation__home_type_saved-news"
-          }`;
+          } ${isMobile ? "navigation__home_type_loggedin-mobile" : ""}`;
         }}
       >
         Home
       </NavLink>
-      {/* </button> */}
-      {/* <button
-        className={`navigation__saved-news ${
-          isSavedNewsRoute && "navigation__saved-news_type_saved-news"
-        }`}
-      > */}
       <NavLink
         to="/saved-news"
         className={({ isActive }) =>
           `navigation__saved-news ${
             isActive && "navigation__saved-news_active"
-          } ${isSavedNewsRoute && "navigation__saved-news_type_saved-news"}`
+          } ${isSavedNewsRoute && "navigation__saved-news_type_saved-news"} ${
+            isMobile ? "navigation__saved-news_type_mobile" : ""
+          }`
         }
       >
         Saved News
       </NavLink>
-      {/* </button> */}
       <button
         type="button"
         onClick={onLogout}
@@ -100,21 +94,28 @@ function Navigation({ isFooter = false, handleLoginModal, onLogout }) {
       >
         {currentUser}{" "}
         <img
-          src={isSavedNewsRoute ? blackLogoutIcon : logoutIcon}
+          src={isSavedNewsRoute && !isMobile ? blackLogoutIcon : logoutIcon}
           alt="logout icon"
           className="navigation__logout"
         />
       </button>
     </div>
   ) : (
-    <div className="navigation">
-      <button className="navigation__home" type="button">
+    <div className={`navigation ${isMobile ? "navigation_open" : ""}`}>
+      <button
+        className={`navigation__home ${
+          isMobile ? "navigation__home_type_mobile" : ""
+        }`}
+        type="button"
+      >
         <NavLink to="/">Home</NavLink>
       </button>
 
       <button
         onClick={handleLoginModal}
-        className="navigation__signin"
+        className={`navigation__signin ${
+          isMobile ? "navigation__signin_type_mobile" : ""
+        }`}
         type="button"
       >
         Sign in

@@ -24,6 +24,7 @@ function RegisterModal({ activeModal, onClose, handleLoginModal, onRegister }) {
       activeModal={activeModal}
       onClose={onClose}
       onSubmit={handleSubmit}
+      containerType="register-user"
     >
       <label htmlFor="register-email" className="modal__label">
         Email

@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
+import menuIcon from "../../assets/menu.svg";
+import menuIconBlack from "../../assets/menu-black.svg";
 
-function Header({ handleLoginModal, onLogout }) {
+function Header({ handleLoginModal, onLogout, handleMobileMenuModal }) {
   const location = useLocation();
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
 
@@ -16,6 +18,17 @@ function Header({ handleLoginModal, onLogout }) {
         <Link to="/">NewsExplorer</Link>
       </h1>
       <Navigation handleLoginModal={handleLoginModal} onLogout={onLogout} />
+      <button
+        className="header__menu-button"
+        type="button"
+        onClick={handleMobileMenuModal}
+      >
+        <img
+          src={!isSavedNewsRoute ? menuIcon : menuIconBlack}
+          alt="icon for an options menu"
+          className="header__menu-icon"
+        />
+      </button>
     </div>
   );
 }

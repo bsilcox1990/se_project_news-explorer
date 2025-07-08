@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
@@ -12,6 +12,7 @@ import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSu
 import ConfirmLogoutModal from "../ConfirmLogoutModal/ConfirmLogoutModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import { getNews } from "../../utils/api";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const savedArticleUrls = new Set(
     savedArticles.map((article) => {
@@ -35,6 +37,7 @@ function App() {
   const handleLoginModal = () => setActiveModal("login-user");
   const handleRegistrationSuccessModal = () => setActiveModal("success");
   const handleConfirmLogoutModal = () => setActiveModal("confirm-logout");
+  const handleMobileMenuModal = () => setActiveModal("mobile-menu");
   const handleCloseModal = () => setActiveModal("");
 
   const handleSaveArticle = (article) => {
@@ -47,8 +50,6 @@ function App() {
     });
     setSavedArticles(tempArray);
   };
-
-  console.log("submit error", submitError);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -93,14 +94,8 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("in use effect", articles);
-  }, [articles]);
-
-  useEffect(() => {
-    console.log("saved articles", savedArticles);
-  }, [savedArticles]);
-
-  console.log("outside use effect", articles);
+    handleCloseModal();
+  }, [location.pathname]);
 
   return (
     <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
@@ -115,6 +110,7 @@ function App() {
                     <Header
                       handleLoginModal={handleLoginModal}
                       onLogout={handleLogoutModal}
+                      handleMobileMenuModal={handleMobileMenuModal}
                     />
                     <Main
                       onSearch={handleSearch}
@@ -135,7 +131,10 @@ function App() {
               path="/saved-news"
               element={
                 <ProtectedRoute>
-                  <Header onLogout={handleLogoutModal} />
+                  <Header
+                    onLogout={handleLogoutModal}
+                    handleMobileMenuModal={handleMobileMenuModal}
+                  />
                   <SavedNews
                     savedArticles={savedArticles}
                     onDeleteArticle={handleDeleteArticle}
@@ -168,6 +167,13 @@ function App() {
           activeModal={activeModal}
           onClose={handleCloseModal}
           onLogout={handleLogout}
+          isLoading={isLoading}
+        />
+        <MobileMenu
+          activeModal={activeModal}
+          onClose={handleCloseModal}
+          handleLoginModal={handleLoginModal}
+          onLogout={handleLogoutModal}
         />
       </div>
     </CurrentUserContext.Provider>

@@ -167,3 +167,42 @@
 .modal__input-error:focus {
   border-bottom: 1px solid red;
 }
+
+.modal_type_mobile-menu {
+  top: 0;
+  left: 0;
+  bottom: auto;
+}
+
+.modal__container_type_mobile-menu {
+  background-color: rgb(26, 27, 34);
+  height: 230px;
+  padding: 0;
+}
+
+.modal__close-button_type_mobile-menu {
+  top: 20px;
+  right: 16px;
+  height: 16px;
+  width: 16px;
+}
+
+@media screen and (max-width: 425px) {
+  .modal_type_login-user {
+    top: 60px;
+  }
+
+  .modal_type_register-user {
+    top: 60px;
+  }
+
+  .modal__container_type_login-user {
+    height: 95vh;
+    padding: 16px;
+  }
+
+  .modal__container_type_register-user {
+    height: 95vh;
+    padding: 16px;
+  }
+}
