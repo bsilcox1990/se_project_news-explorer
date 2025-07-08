@@ -1,12 +1,19 @@
-# React + Vite
+# NewsExplorer: Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The NewsExplorer front end is a responsive, user-friendly single-page application(SPA) built with React. It connects to a news API that allows users to search for topics and view recent news articles based on thier query. Users can save articles to their profile to read later and delete them when they are done.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js: Javascript library for building a dynamic, component-based user interface.
+- React Router: Handles client-side routing for seamless navigation within the SPA.
+- ESLint & Prettier: Enforces code quality and consistent formatting.
+- Vite: Build tool for fast development and optimized production builds.
+- React Hooks: Manages state and side effects in functional components.
+- React Context: Centralized state management for user data.
+- CSS: Component-specific CSS files, with each React component paired with a dedicated .css file, styled using the BEM naming convention for clear, conflict-free class naming.
+- News API: Provides real-time news articles to keep users up to date on the latests topics.
+- Figma: Used for designing the UI prototype.
 
-## Expanding the ESLint configuration
+## Deployment Link
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This website is deployed on GitHub pages.

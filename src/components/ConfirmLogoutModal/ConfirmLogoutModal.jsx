@@ -1,6 +1,6 @@
 import Modal from "../Modal/Modal";
 
-function ConfirmLogoutModal({ activeModal, onClose, onLogout, isLoading }) {
+function ConfirmLogoutModal({ activeModal, onClose, onLogout }) {
   const handleLogout = () => {
     onLogout();
   };
