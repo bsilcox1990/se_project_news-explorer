@@ -14,6 +14,14 @@ The NewsExplorer front end is a responsive, user-friendly single-page applicatio
 - News API: Provides real-time news articles to keep users up to date on the latests topics.
 - Figma: Used for designing the UI prototype.
 
+## Images
+
+![Screenshot of home page](./src/assets/news-explorer-home.png)
+![Screenshot of about me](./src/assets/news-explorer-about-me.png)
+![Screenshot of saved news](./src/assets/news-explorer-saved-news.png)
+
 ## Deployment Link
 
 This website is deployed on GitHub pages.
+
+-[Deployment Link](https://bsilcox1990.github.io/se_project_news-explorer/)
