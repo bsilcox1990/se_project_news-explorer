@@ -13,7 +13,7 @@ import ConfirmLogoutModal from "../ConfirmLogoutModal/ConfirmLogoutModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { getNews } from "../../utils/api";
+import { getNews } from "../../utils/newsApi";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
