@@ -14,6 +14,9 @@ import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { getNews } from "../../utils/newsApi";
+import { saveArticle, getSavedArticles, deleteArticle } from "../../utils/api";
+import { getUser, signin } from "../../utils/auth";
+import { setToken, getToken, deleteToken } from "../../utils/token";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,15 +44,43 @@ function App() {
   const handleCloseModal = () => setActiveModal("");
 
   const handleSaveArticle = (article) => {
-    setSavedArticles((prev) => [...prev, { ...article, topic }]);
+    saveArticle(article)
+      .then((data) => {
+        setSavedArticles((prev) => [...prev, { ...data, topic }]);
+      })
+      .catch(console.error);
   };
 
+  useEffect(() => {
+    getSavedArticles()
+      .then((data) => {
+        setSavedArticles(data);
+      })
+      .catch(console.error);
+  }, []);
+
   const handleDeleteArticle = (article) => {
-    const tempArray = savedArticles.filter((item) => {
-      return item !== article;
-    });
-    setSavedArticles(tempArray);
+    deleteArticle(article._id)
+      .then(() => {
+        const tempArray = savedArticles.filter((item) => {
+          return item !== article;
+        });
+        setSavedArticles(tempArray);
+      })
+      .catch(console.error);
   };
+
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      getUser(token)
+        .then((user) => {
+          setIsLoggedIn(true);
+          setCurrentUser(user.data.name);
+        })
+        .catch(console.error);
+    }
+  }, []);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -77,10 +108,18 @@ function App() {
     handleRegistrationSuccessModal();
   };
 
-  const handleLoginUser = () => {
-    setIsLoggedIn(true);
-    setCurrentUser("Bradley");
-    handleCloseModal();
+  const handleLoginUser = ({ email, password }) => {
+    signin(email, password)
+      .then((token) => {
+        setToken(token);
+        return getUser(token);
+      })
+      .then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user.data.name);
+        handleCloseModal();
+      })
+      .catch(console.error);
   };
 
   const handleLogoutModal = () => {
@@ -88,6 +127,7 @@ function App() {
   };
 
   const handleLogout = () => {
+    deleteToken();
     setIsLoggedIn(false);
     handleCloseModal();
     navigate("/");

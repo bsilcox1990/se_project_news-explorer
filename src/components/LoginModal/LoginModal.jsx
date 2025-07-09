@@ -8,7 +8,7 @@ function LoginModal({ activeModal, handleRegisterModal, onClose, onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin();
+    onLogin(values);
     resetForm({ email: "", password: "" }, {}, false);
   };
 

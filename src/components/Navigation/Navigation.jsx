@@ -63,7 +63,7 @@ function Navigation({
     <div className={`navigation ${isMobile ? "navigation_open" : ""}`}>
       <NavLink
         to="/"
-        exact
+        exact="true"
         className={({ isActive }) => {
           console.log("is active in home button", isActive);
           return `navigation__home ${isActive && "navigation__home_active"} ${
