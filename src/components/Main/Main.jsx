@@ -23,7 +23,7 @@ function Main({
   };
 
   return (
-    <div className="main">
+    <main className="main">
       <div className="main__content">
         <section className="search">
           <h2 className="main__title">What's going on in the world?</h2>
@@ -88,7 +88,7 @@ function Main({
           </section>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 

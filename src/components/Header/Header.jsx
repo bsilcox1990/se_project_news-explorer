@@ -9,7 +9,9 @@ function Header({ handleLoginModal, onLogout, handleMobileMenuModal }) {
   const isSavedNewsRoute = location.pathname.startsWith("/saved-news");
 
   return (
-    <div className={`header ${isSavedNewsRoute && "header_type_saved-news"}`}>
+    <header
+      className={`header ${isSavedNewsRoute && "header_type_saved-news"}`}
+    >
       <h1
         className={`header__title ${
           isSavedNewsRoute && "header__title_type_saved-news"
@@ -29,7 +31,7 @@ function Header({ handleLoginModal, onLogout, handleMobileMenuModal }) {
           className="header__menu-icon"
         />
       </button>
-    </div>
+    </header>
   );
 }
 
