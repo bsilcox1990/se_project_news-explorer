@@ -1,0 +1,25 @@
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: url(../../assets/custom-cursor-pointer.svg) 0 0, pointer;
+}
+
+.page {
+  font-family: "Roboto", Georgia, "Times New Roman", Times, serif;
+}
+
+.page__content {
+  max-width: 2560px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.page__background {
+  background: url(../../assets/phone-background-min.jpg) no-repeat center;
+  background-size: cover;
+  flex: 1 0 auto;
+}
